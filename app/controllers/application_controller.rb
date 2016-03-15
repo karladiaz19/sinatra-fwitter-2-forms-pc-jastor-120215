@@ -12,5 +12,17 @@ class ApplicationController < Sinatra::Base
     @tweets = Tweet.all
     erb :index 
   end
-
+  
+  get '/tweet' do
+    erb :tweet
+  end
+  
+  post '/tweet' do
+       Tweet.new(params[:username], params[:status])
+       redirect '/'
+  end
 end
+
+ #@username = params[:username]
+ #@tweet_text = params[:status]
+ #'<h1><%= #{username} says #{@tweet_text}'
